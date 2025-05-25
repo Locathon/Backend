@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/members")
 @RequiredArgsConstructor
@@ -17,8 +20,13 @@ public class LoginController {
     private final LoginService loginService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginDto dto){
-        Member member = loginService.login(dto);
-        return ResponseEntity.ok("로그인 성공! " + member.getEmail());
+    public ResponseEntity<Map> login(@RequestBody LoginDto dto){
+        String token = loginService.login(dto);
+        Map<String, Object> response = new HashMap<>();
+        response.put("token", token);
+        response.put("email", dto.getEmail());
+        response.put("message", "로그인 성공");
+
+        return ResponseEntity.ok(response);
     }
 }

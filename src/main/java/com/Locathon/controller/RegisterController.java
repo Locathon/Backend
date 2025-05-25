@@ -1,7 +1,7 @@
 package com.Locathon.controller;
 
 import com.Locathon.dto.MemberDto;
-import com.Locathon.service.MemberService;
+import com.Locathon.service.RegisterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/members")
-public class MemberController {
-    private final MemberService memberService;
+public class RegisterController {
+    private final RegisterService registerService;
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody MemberDto dto){
-        Long id = memberService.register(dto);
+        Long id = registerService.register(dto);
         return ResponseEntity.ok("회원가입 성공! Id: " + id);
     }
 
