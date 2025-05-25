@@ -38,7 +38,10 @@ public class SecurityConfig {
 				.formLogin(Customizer.withDefaults())
 				.httpBasic(Customizer.withDefaults())
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/api/members/**").permitAll()  // 회원가입/로그인은 인증 없이 허용
+						.requestMatchers(
+								"/api/members/**",
+								"/swagger-ui/**",
+								"/v3/api-docs/**").permitAll()  // 회원가입/로그인은 인증 없이 허용
 						.anyRequest().authenticated()
 				)
 				.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
