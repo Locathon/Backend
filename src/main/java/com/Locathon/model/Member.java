@@ -21,9 +21,24 @@ public class Member {
     @Column(nullable = false)
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private MemberRole role;  // 일반 사용자 or 소상공인 여부
+
+    private String storeName;
+    private String storeAddress;
+
     @Builder
-    public Member(String email, String password){
+    public Member(String email, String password, MemberRole role,
+                  String storeName, String storeAddress) {
         this.email = email;
         this.password = password;
+        this.role = role;
+        this.storeName = storeName;
+        this.storeAddress = storeAddress;
+    }
+
+    public void changePassword(String newPassword) {
+        this.password = newPassword;
     }
 }

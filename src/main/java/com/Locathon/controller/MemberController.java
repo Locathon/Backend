@@ -20,4 +20,5 @@ public class MemberController {
         Long id = memberService.register(dto);
         return ResponseEntity.ok("회원가입 성공! Id: " + id);
     }
+
 }
