@@ -1,7 +1,6 @@
 package com.Locathon.service;
 
 import com.Locathon.dto.MemberDto;
-import com.Locathon.jwt.JwtTokenProvider;
 import com.Locathon.model.Member;
 import com.Locathon.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;

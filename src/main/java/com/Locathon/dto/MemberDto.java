@@ -14,7 +14,6 @@ public class MemberDto {
     private String role;
     private String storeName;     // MERCHANT인 경우만 입력
     private String storeAddress;  // MERCHANT인 경우만 입력
-    private String phoneNumber;
 
     public Member toEntity() {
         return Member.builder()
