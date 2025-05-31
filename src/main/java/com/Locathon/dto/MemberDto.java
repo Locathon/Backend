@@ -10,18 +10,16 @@ import lombok.NoArgsConstructor;
 public class MemberDto {
     private String email;
     private String password;
+    private String username;
 
     private String role;
-    private String storeName;     // MERCHANT인 경우만 입력
-    private String storeAddress;  // MERCHANT인 경우만 입력
 
     public Member toEntity() {
         return Member.builder()
                 .email(email)
                 .password(password)
+                .username(username)
                 .role(MemberRole.valueOf(role))
-                .storeName(role.equals("MERCHANT") ? storeName : null)
-                .storeAddress(role.equals("MERCHANT") ? storeAddress : null)
                 .build();
     }
 }
