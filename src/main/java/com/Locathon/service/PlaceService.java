@@ -4,11 +4,9 @@ import com.Locathon.dto.PlaceDto;
 import com.Locathon.model.Member;
 import com.Locathon.model.MemberRole;
 import com.Locathon.model.Place;
-import com.Locathon.repository.MemberRepository;
 import com.Locathon.repository.PlaceRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,15 +23,13 @@ public class PlaceService {
     public PlaceDto createPlace(PlaceDto placeDto, MemberDetails memberDetails) {
         Member member = memberDetails.getMember();
 
-        if (member.getRole() != MemberRole.MERCHANT) {
-            throw new IllegalStateException("Place는 Merchant만 등록할 수 있습니다.");
+        if (member.getRole() == MemberRole.USER) {
+            throw new IllegalStateException("Place는 USER가 등록할 수 없습니다.");
         }
 
         Place place = new Place();
         place.setName(placeDto.getName());
         place.setDescription(placeDto.getDescription());
-        place.setLatitude(placeDto.getLatitude());
-        place.setLongitude(placeDto.getLongitude());
         place.setAddress(placeDto.getAddress());
         place.setCreatedBy(member);
 
@@ -68,8 +64,6 @@ public class PlaceService {
         return PlaceDto.builder()
                 .name(place.getName())
                 .description(place.getDescription())
-                .latitude(place.getLatitude())
-                .longitude(place.getLongitude())
                 .address(place.getAddress())
                 .build();
     }

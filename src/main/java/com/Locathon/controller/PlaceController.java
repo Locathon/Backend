@@ -18,7 +18,7 @@ public class PlaceController {
 
     private final PlaceService placeService;
 
-    // 장소 등록 (Merchant만 가능)
+    // 장소 등록 (Merchant와 Resident만 가능)
     @PostMapping
     public ResponseEntity<PlaceDto> createPlace(@RequestBody PlaceDto placeDto, @AuthenticationPrincipal MemberDetails memberDetails) {
         PlaceDto created = placeService.createPlace(placeDto, memberDetails);
