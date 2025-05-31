@@ -1,13 +1,13 @@
 package com.Locathon.service;
 
 import com.Locathon.dto.CourseDto;
+import com.Locathon.dto.CourseListDto;
 import com.Locathon.dto.CoursePlaceDto;
 import com.Locathon.model.*;
 import com.Locathon.repository.CoursePlaceRepository;
 import com.Locathon.repository.CourseRepository;
 import com.Locathon.repository.PlaceRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +24,7 @@ public class CourseService {
 
     //코스 생성
     @Transactional
-    public Course createCourse(CourseDto courseDto, @AuthenticationPrincipal Member userDetails) {
+    public Course createCourse(CourseDto courseDto, Member memberDetails) {
         List<CoursePlaceDto> placeDtos = courseDto.getCoursePlaces();
 
         if (placeDtos == null || placeDtos.size() < 2) {
@@ -34,7 +34,7 @@ public class CourseService {
         Course course = new Course();
         course.setName(courseDto.getName());
         course.setDescription(courseDto.getDescription());
-        course.setCreatedBy(userDetails);
+        course.setCreatedBy(memberDetails);
         courseRepository.save(course);
 
         List<CoursePlace> coursePlaces = new ArrayList<>();
@@ -59,7 +59,7 @@ public class CourseService {
 
     //코스 조회
     @Transactional(readOnly = true)
-    public CourseDto getCourse(Long courseId) {
+    public CourseListDto getCourse(Long courseId) {
         Course course = courseRepository.findById(courseId)
                 .orElseThrow(() -> new IllegalArgumentException("코스를 찾을 수 없습니다."));
 
@@ -67,8 +67,7 @@ public class CourseService {
                 .map(cp -> new CoursePlaceDto(cp.getPlace().getId(), cp.getOrderIndex()))
                 .toList();
 
-        CourseDto dto = new CourseDto();
-        dto.setId(course.getId());
+        CourseListDto dto = new CourseListDto();
         dto.setName(course.getName());
         dto.setDescription(course.getDescription());
         dto.setCreatedById(course.getCreatedBy().getId());

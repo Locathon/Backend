@@ -1,9 +1,11 @@
 package com.Locathon.controller;
 import com.Locathon.dto.CourseDto;
+import com.Locathon.dto.CourseListDto;
 import com.Locathon.model.Course;
 import com.Locathon.model.Member;
 import com.Locathon.repository.MemberRepository;
 import com.Locathon.service.CourseService;
+import com.Locathon.service.MemberDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -17,21 +19,19 @@ import org.springframework.web.bind.annotation.*;
 public class CourseController {
 
     private final CourseService courseService;
-    private final MemberRepository memberRepository;
-
 
     //코스 생성
     @PostMapping
-    public ResponseEntity<CourseDto> createCourse(@RequestBody CourseDto courseDto, Member member) {
-        Course course = courseService.createCourse(courseDto, member);
-        CourseDto result = courseService.getCourse(course.getId());
+    public ResponseEntity<CourseListDto> createCourse(@RequestBody CourseDto courseDto, @AuthenticationPrincipal MemberDetails memberDetails) {
+        Course course = courseService.createCourse(courseDto, memberDetails.getMember());
+        CourseListDto result = courseService.getCourse(course.getId());
         return ResponseEntity.ok(result);
     }
 
      //코스 조회
     @GetMapping("/{id}")
-    public ResponseEntity<CourseDto> getCourse(@PathVariable Long id) {
-        CourseDto dto = courseService.getCourse(id);
+    public ResponseEntity<CourseListDto> getCourse(@PathVariable Long id) {
+        CourseListDto dto = courseService.getCourse(id);
         return ResponseEntity.ok(dto);
     }
 }
