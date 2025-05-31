@@ -1,11 +1,18 @@
 package com.Locathon.dto;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PlaceDto {
-    private Long id;
     private String name;
     private String description;
-    private String location;
-    private List<String> tags;
+    private Double latitude;
+    private Double longitude;
+    private String address;
 }
