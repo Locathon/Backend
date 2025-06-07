@@ -1,6 +1,6 @@
 package com.Locathon.Member.service;
 
-import com.Locathon.Member.model.Member;
+import com.Locathon.model.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

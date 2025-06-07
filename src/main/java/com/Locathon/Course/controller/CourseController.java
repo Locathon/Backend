@@ -2,7 +2,7 @@ package com.Locathon.Course.controller;
 import com.Locathon.Course.dto.CourseDto;
 import com.Locathon.Course.dto.CourseListDto;
 import com.Locathon.Course.service.CourseService;
-import com.Locathon.Course.model.Course;
+import com.Locathon.model.Course;
 import com.Locathon.Member.service.MemberDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

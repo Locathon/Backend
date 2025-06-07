@@ -1,6 +1,6 @@
 package com.Locathon.Member.repository;
 
-import com.Locathon.Member.model.Member;
+import com.Locathon.model.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,8 +1,5 @@
-package com.Locathon.Place.model;
+package com.Locathon.model;
 
-import com.Locathon.Member.model.Member;
-import com.Locathon.Member.model.MemberRole;
-import com.Locathon.Course.model.CoursePlace;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +17,6 @@ public class Place {
 
     private String name;        //장소 이름
     private String description; //장소 설명
-    //private Double latitude;    //위도
-    //private Double longitude;   //경도
     private String address;     //주소
 
     @ManyToOne(fetch = FetchType.LAZY)

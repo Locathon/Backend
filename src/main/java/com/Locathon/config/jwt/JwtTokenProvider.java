@@ -1,6 +1,6 @@
 package com.Locathon.config.jwt;
 
-import com.Locathon.Member.model.MemberRole;
+import com.Locathon.model.MemberRole;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

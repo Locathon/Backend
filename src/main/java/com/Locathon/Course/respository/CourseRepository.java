@@ -1,6 +1,6 @@
 package com.Locathon.Course.respository;
 
-import com.Locathon.Course.model.Course;
+import com.Locathon.model.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

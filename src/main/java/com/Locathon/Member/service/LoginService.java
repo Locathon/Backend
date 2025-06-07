@@ -3,7 +3,7 @@ package com.Locathon.Member.service;
 import com.Locathon.Member.dto.LoginDto;
 import com.Locathon.Member.repository.MemberRepository;
 import com.Locathon.config.jwt.JwtTokenProvider;
-import com.Locathon.Member.model.Member;
+import com.Locathon.model.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.Locathon.Member.model;
+package com.Locathon.model;
 
 import jakarta.persistence.*;
 import lombok.Builder;

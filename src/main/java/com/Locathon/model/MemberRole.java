@@ -1,4 +1,4 @@
-package com.Locathon.Member.model;
+package com.Locathon.model;
 
 public enum MemberRole {
     USER,           // 일반 사용자

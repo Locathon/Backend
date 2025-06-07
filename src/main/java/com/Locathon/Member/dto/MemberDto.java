@@ -1,7 +1,7 @@
 package com.Locathon.Member.dto;
 
-import com.Locathon.Member.model.Member;
-import com.Locathon.Member.model.MemberRole;
+import com.Locathon.model.Member;
+import com.Locathon.model.MemberRole;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

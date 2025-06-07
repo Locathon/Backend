@@ -2,9 +2,9 @@ package com.Locathon.Place.service;
 
 import com.Locathon.Member.service.MemberDetails;
 import com.Locathon.Place.dto.PlaceDto;
-import com.Locathon.Member.model.Member;
-import com.Locathon.Member.model.MemberRole;
-import com.Locathon.Place.model.Place;
+import com.Locathon.model.Member;
+import com.Locathon.model.MemberRole;
+import com.Locathon.model.Place;
 import com.Locathon.Place.repository.PlaceRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

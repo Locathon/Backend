@@ -1,6 +1,5 @@
-package com.Locathon.Course.model;
+package com.Locathon.model;
 
-import com.Locathon.Place.model.Place;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
