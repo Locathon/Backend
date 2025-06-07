@@ -30,8 +30,10 @@ public class PlaceService {
 
         Place place = new Place();
         place.setName(placeDto.getName());
-        place.setDescription(placeDto.getDescription());
-        place.setAddress(placeDto.getAddress());
+        place.setTitle(placeDto.getTitle());
+        place.setContent(placeDto.getContent());
+        place.setLatitude(placeDto.getLatitude());
+        place.setLongitude(placeDto.getLongitude());
         place.setCreatedBy(member);
 
         Place saved = placeRepository.save(place);
@@ -64,8 +66,10 @@ public class PlaceService {
     private PlaceDto mapToDto(Place place) {
         return PlaceDto.builder()
                 .name(place.getName())
-                .description(place.getDescription())
-                .address(place.getAddress())
+                .title(place.getTitle())
+                .content(place.getContent())
+                .latitude(place.getLatitude())
+                .longitude(place.getLongitude())
                 .build();
     }
 }

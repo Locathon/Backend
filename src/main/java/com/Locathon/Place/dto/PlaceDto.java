@@ -1,16 +1,19 @@
 package com.Locathon.Place.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.Locathon.model.Member;
+import lombok.*;
 
+/* 프론트로부터 받아올 Place DTO*/
 @Data
 @Builder
-@NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
 public class PlaceDto {
     private String name;
-    private String description;
-    private String address;
+    private String title;
+    private String content;
+    private Long latitude;
+    private Long longitude;
+
+    private Member createdBy;
 }
