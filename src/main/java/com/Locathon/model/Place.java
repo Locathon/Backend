@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter @Setter
 @RequiredArgsConstructor
@@ -16,8 +19,8 @@ public class Place {
     private String title;
     private String content; //장소 설명
 
-    private Long latitude;
-    private Long longitude;   //위도, 경도(프론트로부터 받아올 것)
+    private Double latitude;
+    private Double longitude;   //위도, 경도(프론트로부터 받아올 것)
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "create_by")
@@ -31,5 +34,7 @@ public class Place {
         }
     }
 
+    @OneToMany(mappedBy = "place", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PlaceImage> images = new ArrayList<>();
 
 }

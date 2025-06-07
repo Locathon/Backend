@@ -6,10 +6,12 @@ import com.Locathon.model.Member;
 import com.Locathon.model.MemberRole;
 import com.Locathon.model.Place;
 import com.Locathon.Place.repository.PlaceRepository;
+import com.Locathon.model.PlaceImage;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,8 +38,19 @@ public class PlaceService {
         place.setLongitude(placeDto.getLongitude());
         place.setCreatedBy(member);
 
-        Place saved = placeRepository.save(place);
+        List<PlaceImage> imageEntities = new ArrayList<>();
+        int limit = Math.min(placeDto.getImageUrls().size(), 3);
 
+        for (int i = 0; i < limit; i++) {
+            String imageUrl = placeDto.getImageUrls().get(i);
+            PlaceImage placeImage = new PlaceImage();
+            placeImage.setImageUrl(imageUrl);
+            placeImage.setPlace(place);
+            imageEntities.add(placeImage);
+        }
+
+        place.setImages(imageEntities);
+        Place saved = placeRepository.save(place);
         return mapToDto(saved);
     }
 

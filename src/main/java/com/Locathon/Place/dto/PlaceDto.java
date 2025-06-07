@@ -1,7 +1,10 @@
 package com.Locathon.Place.dto;
 
 import com.Locathon.model.Member;
+import com.Locathon.model.PlaceImage;
 import lombok.*;
+
+import java.util.List;
 
 /* 프론트로부터 받아올 Place DTO*/
 @Data
@@ -13,9 +16,9 @@ public class PlaceDto {
     private String name;
     private String title;
     private String content;
-    private Long latitude;
-    private Long longitude;
+    private Double latitude;
+    private Double longitude;
 
-    private Member createdBy;
+    private List<String> imageUrls;
 
 }
