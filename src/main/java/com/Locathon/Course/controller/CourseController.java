@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/courses")
 @RequiredArgsConstructor
@@ -29,5 +31,10 @@ public class CourseController {
     public ResponseEntity<CourseListDto> getCourse(@PathVariable Long id) {
         CourseListDto dto = courseService.getCourse(id);
         return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping
+    public List<CourseListDto> getCourseList() {
+        return courseService.getCourseList();
     }
 }

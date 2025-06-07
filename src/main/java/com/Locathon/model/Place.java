@@ -5,9 +5,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Getter @Setter
 @RequiredArgsConstructor
@@ -34,6 +31,5 @@ public class Place {
         }
     }
 
-    @OneToMany(mappedBy = "place", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CoursePlace> coursePlaces = new ArrayList<>();
+
 }

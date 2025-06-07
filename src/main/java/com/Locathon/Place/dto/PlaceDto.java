@@ -8,6 +8,7 @@ import lombok.*;
 @Builder
 @RequiredArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class PlaceDto {
     private String name;
     private String title;
@@ -16,4 +17,5 @@ public class PlaceDto {
     private Long longitude;
 
     private Member createdBy;
+
 }

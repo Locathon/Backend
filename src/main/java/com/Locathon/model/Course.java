@@ -14,12 +14,18 @@ public class Course {
     private Long id;
 
     private String name;
-    private String description;
+    private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "create_by")
     private Member createdBy;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CoursePlace> coursePlaceList = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "course_place",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "place_id")
+    )
+    private List<Place> coursePlaces = new ArrayList<>();
 }

@@ -1,5 +1,6 @@
 package com.Locathon.Course.dto;
 
+import com.Locathon.model.Place;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,6 @@ public class CourseListDto {
     private String name;
     private String description;
     private Long createdById;
-    private List<CoursePlaceDto> coursePlaces;  // 순서 포함한 장소 목록
+    private List<Place> coursePlaces;  // 순서 포함한 장소 목록
 
 }
