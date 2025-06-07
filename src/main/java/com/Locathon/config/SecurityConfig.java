@@ -1,6 +1,6 @@
 package com.Locathon.config;
 
-import com.Locathon.jwt.JwtAuthenticationFilter;
+import com.Locathon.config.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
