@@ -22,7 +22,7 @@ public class MerchantService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     private static final String AI_SERVER_BASE_URL = "http://localhost:8000";
-
+ls
     // 스타일 변환 요청 및 저장
     public StyleTransformResponse styleTransform(StyleTransformRequest request) {
         String url = AI_SERVER_BASE_URL + "/merchant/style-transform";
