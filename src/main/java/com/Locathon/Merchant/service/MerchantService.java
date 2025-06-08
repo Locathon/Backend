@@ -21,7 +21,7 @@ public class MerchantService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    private static final String AI_SERVER_BASE_URL = "http://ai-server-address";
+    private static final String AI_SERVER_BASE_URL = "http://localhost:8000";
 
     // 스타일 변환 요청 및 저장
     public StyleTransformResponse styleTransform(StyleTransformRequest request) {
