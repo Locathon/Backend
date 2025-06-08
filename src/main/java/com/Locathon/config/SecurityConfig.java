@@ -38,12 +38,20 @@ public class SecurityConfig {
 				.formLogin(Customizer.withDefaults())
 				.httpBasic(Customizer.withDefaults())
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers(
-								"/api/members/**",
-								"/swagger-ui/**",
-								"/v3/api-docs/**").permitAll()  // 회원가입/로그인은 인증 없이 허용
-						.anyRequest().authenticated()
-				)
+				.requestMatchers(
+					"/api/members/**",
+					"/swagger-ui/**",
+					"/v3/api-docs/**",
+					"/merchant/style-transform",
+					"/merchant/style-log",
+					"/chat/merchant",
+					"/qa/add",
+					"/qa/edit",
+					"/qa/delete",
+					"/qa/list"
+				).permitAll()
+				.anyRequest().authenticated()
+			)
 				.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
 		return http.build();
