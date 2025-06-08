@@ -15,23 +15,6 @@ public class MerchantController {
 
     private final MerchantService merchantService;
 
-    // 서버 상태 확인
-    @GetMapping
-    public ResponseEntity<?> healthCheck() {
-        return ResponseEntity.ok(java.util.Map.of(
-                "message", "Merchant AI Service Running...",
-                "endpoints", List.of(
-                        "/merchant/style-transform",
-                        "/merchant/style-log",
-                        "/chat/merchant",
-                        "/qa/add",
-                        "/qa/edit",
-                        "/qa/delete",
-                        "/qa/list"
-                )
-        ));
-    }
-
     // 스타일 변환
     @PostMapping("/merchant/style-transform")
     public ResponseEntity<StyleTransformResponse> styleTransform(@RequestBody StyleTransformRequest request) {

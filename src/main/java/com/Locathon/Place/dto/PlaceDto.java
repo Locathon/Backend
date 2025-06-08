@@ -11,7 +11,6 @@ import java.util.List;
 @Builder
 @RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
 public class PlaceDto {
     private String name;
     private String title;
