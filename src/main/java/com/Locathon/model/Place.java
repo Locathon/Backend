@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,6 +21,7 @@ public class Place {
     private Double latitude;
     private Double longitude;   //위도, 경도(프론트로부터 받아올 것)
 
+    @ElementCollection
     private List<String> imageUrls;
 
     @ManyToOne(fetch = FetchType.LAZY)

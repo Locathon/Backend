@@ -42,6 +42,7 @@ public class PlaceService {
 
         for (int i = 0; i < limit; i++) {
             String imageUrl = placeDto.getImageUrls().get(i);
+            imageUrls.add(imageUrl);
         }
 
         place.setImageUrls(imageUrls);
@@ -78,6 +79,7 @@ public class PlaceService {
                 .content(place.getContent())
                 .latitude(place.getLatitude())
                 .longitude(place.getLongitude())
+                .imageUrls(place.getImageUrls())
                 .build();
     }
 }
