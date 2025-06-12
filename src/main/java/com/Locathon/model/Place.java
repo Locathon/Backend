@@ -22,6 +22,8 @@ public class Place {
     private Double latitude;
     private Double longitude;   //위도, 경도(프론트로부터 받아올 것)
 
+    private List<String> imageUrls;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "create_by")
     private Member createdBy;
@@ -34,7 +36,6 @@ public class Place {
         }
     }
 
-    @OneToMany(mappedBy = "place", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PlaceImage> images = new ArrayList<>();
+
 
 }
