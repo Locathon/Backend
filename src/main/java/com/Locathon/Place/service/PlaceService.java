@@ -47,13 +47,22 @@ public class PlaceService {
 
         place.setImageUrls(imageUrls);
         Place saved = placeRepository.save(place);
-        return mapToDto(saved);
+
+        return PlaceDto.builder()
+                .name(saved.getName())
+                .title(saved.getTitle())
+                .content(saved.getContent())
+                .latitude(saved.getLatitude())
+                .longitude(saved.getLongitude())
+                .imageUrls(saved.getImageUrls())
+                .build();
     }
 
     // 장소 상세 조회
     public PlaceDto getPlaceById(Long id) {
         Place place = placeRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 ID의 장소가 없습니다."));
+
 
         return mapToDto(place);
     }
@@ -74,6 +83,7 @@ public class PlaceService {
 
     private PlaceDto mapToDto(Place place) {
         return PlaceDto.builder()
+                .id(place.getId())
                 .name(place.getName())
                 .title(place.getTitle())
                 .content(place.getContent())
