@@ -48,14 +48,7 @@ public class PlaceService {
         place.setImageUrls(imageUrls);
         Place saved = placeRepository.save(place);
 
-        return PlaceDto.builder()
-                .name(saved.getName())
-                .title(saved.getTitle())
-                .content(saved.getContent())
-                .latitude(saved.getLatitude())
-                .longitude(saved.getLongitude())
-                .imageUrls(saved.getImageUrls())
-                .build();
+        return mapToDto(saved);
     }
 
     // 장소 상세 조회
