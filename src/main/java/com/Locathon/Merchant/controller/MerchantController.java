@@ -35,6 +35,12 @@ public class MerchantController {
     // 스타일 변환
     @PostMapping("/merchant/style-transform")
     public ResponseEntity<StyleTransformResponse> styleTransform(@RequestBody StyleTransformRequest request) {
+        System.out.println("요청 DTO: " + request);
+        // 또는
+        System.out.println("original_text=" + request.getOriginalText()
+                + " storeName=" + request.getStoreName()
+                + " sns=" + request.getSns()
+                + " tone=" + request.getTone());
         return ResponseEntity.ok(merchantService.styleTransform(request));
     }
 

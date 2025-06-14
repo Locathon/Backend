@@ -26,12 +26,22 @@ public class MerchantService {
     // 스타일 변환 요청 및 저장
     public StyleTransformResponse styleTransform(StyleTransformRequest request) {
         String url = AI_SERVER_BASE_URL + "/merchant/style-transform";
-
+        System.out.println("서비스단 요청: original_text=" + request.getOriginalText()
+                + " storeName=" + request.getStoreName()
+                + " sns=" + request.getSns()
+                + " tone=" + request.getTone());
+        // 이하 생략
         // AI 서버 호출용 요청 맵핑
         var aiRequest = new java.util.HashMap<String, Object>();
         aiRequest.put("original_text", request.getOriginalText());
         if (request.getTone() != null && !request.getTone().isEmpty()) {
             aiRequest.put("tone", request.getTone());
+        }
+        if (request.getStoreName() != null && !request.getStoreName().isEmpty()) {
+            aiRequest.put("store_name", request.getStoreName());
+        }
+        if (request.getSns() != null && !request.getSns().isEmpty()) {
+            aiRequest.put("sns", request.getSns());
         }
 
         var aiResponse = restTemplate.postForObject(url, aiRequest, java.util.Map.class);
@@ -116,7 +126,8 @@ public class MerchantService {
     // 상점 QA 챗봇 질문 (GPT fallback 포함)
     public MerchantChatResponse chatMerchant(MerchantChatRequest request) {
         // 1. 우선 저장된 QA에서 유사 질문 검색 (간단히 완전일치 또는 유사도 로직은 별도 구현 필요)
-        MerchantQa matched = merchantQaRepository.findByMerchantIdAndQuestion(request.getMerchantId(), request.getQuestion());
+        MerchantQa matched = merchantQaRepository.findByMerchantIdAndQuestion(request.getMerchantId(),
+                request.getQuestion());
 
         if (matched != null) {
             // 점수 1.0으로 확정 답변 제공
