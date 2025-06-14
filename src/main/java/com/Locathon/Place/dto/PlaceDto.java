@@ -13,6 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PlaceDto {
+    private Long id;
+
     private String name;
     private String title;
     private String content;
